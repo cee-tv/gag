@@ -1,4 +1,5 @@
-const navToggle = document.getElementById("navToggle");Add commentMore actions
+// Navigation toggle
+const navToggle = document.getElementById("navToggle");
 const mainNav = document.getElementById("mainNav");
 navToggle.addEventListener("click", function () {
   mainNav.classList.toggle("open");
@@ -82,7 +83,7 @@ const emojis = {
   "Pumpkin Mask": '🎭', "Cherry Blossom Pin": '🌸'
 };
 
-// Pad functionAdd commentMore actions
+// Pad function
 function pad(n) {
   return n < 10 ? '0' + n : n;
 }
@@ -148,7 +149,7 @@ function getNextRestocks() {
 // Format value
 function formatValue(val) {
   if (val >= 1000000) return 'x' + (val / 1000000).toFixed(1) + 'M';
-  if (val >= 1000) return 'x' + (val / 1000).toFixed(1) + 'K';Add commentMore actions
+  if (val >= 1000) return 'x' + (val / 1000).toFixed(1) + 'K';
   return 'x' + val;
 }
 
@@ -210,7 +211,7 @@ async function fetchAndRender() {
   const scrollY = window.scrollY;
   const updateTime = document.getElementById("updateTime");
   try {
- const resp = await fetch("https://corsproxy.io/?https://gagstock.gleeze.com/grow-a-garden");Add commentMore actions
+    const resp = await fetch("https://corsproxy.io/?https://gagstock.gleeze.com/grow-a-garden");
     if (!resp.ok) throw new Error("Failed to fetch API");
     const data = (await resp.json()).data;
     const restocks = getNextRestocks();
@@ -264,7 +265,7 @@ async function fetchAndRender() {
           </table>
         `;
       } else {
-div.innerHTML = `Add commentMore actions
+        div.innerHTML = `
           <div class="section-title"><span class="emoji">${section.emoji}</span>${section.label.replace(section.emoji, '')}</div>
           <span class="restock">${section.restock ? "⏳ Restock in: " + section.restock : ''}</span>
           <table>
@@ -325,7 +326,7 @@ async function checkApiStatus() {
   const onlineColor = getComputedStyle(document.documentElement).getPropertyValue('--online').trim() || '#4be87a';
   const offlineColor = getComputedStyle(document.documentElement).getPropertyValue('--offline').trim() || '#ff5252';
   try {
-// Use GET to avoid HEAD being blockedAdd commentMore actions
+    // Use GET to avoid HEAD being blocked
     const resp = await fetch("https://corsproxy.io/?https://gagstock.gleeze.com/grow-a-garden", { method: "GET", cache: "no-cache" });
     if (resp.ok) {
       apiStatusElem.textContent = "API: Online";
