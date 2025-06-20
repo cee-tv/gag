@@ -1,5 +1,4 @@
-// Navigation toggle
-const navToggle = document.getElementById("navToggle");
+const navToggle = document.getElementById("navToggle");Add commentMore actions
 const mainNav = document.getElementById("mainNav");
 navToggle.addEventListener("click", function () {
   mainNav.classList.toggle("open");
@@ -38,7 +37,7 @@ themeSelect.addEventListener("change", function () {
 
 // Highlight current nav link
 (function () {
-  let navLinks = document.querySelectorAll(".nav-link");Add commentMore actions
+  let navLinks = document.querySelectorAll(".nav-link");
   let currentPage = window.location.pathname.replace(/\\/g, '/').split('/').pop() || "index.html";
   navLinks.forEach(link => {
     if (link.getAttribute("href") === currentPage) {
@@ -83,7 +82,7 @@ const emojis = {
   "Pumpkin Mask": '🎭', "Cherry Blossom Pin": '🌸'
 };
 
-// Pad function
+// Pad functionAdd commentMore actions
 function pad(n) {
   return n < 10 ? '0' + n : n;
 }
@@ -148,8 +147,8 @@ function getNextRestocks() {
 
 // Format value
 function formatValue(val) {
-  if (val >= 1000000) return 'x' + (val / 1000000).toFixed(1) + 'M';Add commentMore actions
-  if (val >= 1000) return 'x' + (val / 1000).toFixed(1) + 'K';
+  if (val >= 1000000) return 'x' + (val / 1000000).toFixed(1) + 'M';
+  if (val >= 1000) return 'x' + (val / 1000).toFixed(1) + 'K';Add commentMore actions
   return 'x' + val;
 }
 
@@ -211,7 +210,7 @@ async function fetchAndRender() {
   const scrollY = window.scrollY;
   const updateTime = document.getElementById("updateTime");
   try {
-    const resp = await fetch("https://corsproxy.io/?https://gagstock.gleeze.com/grow-a-garden");Add commentMore actions
+ const resp = await fetch("https://corsproxy.io/?https://gagstock.gleeze.com/grow-a-garden");Add commentMore actions
     if (!resp.ok) throw new Error("Failed to fetch API");
     const data = (await resp.json()).data;
     const restocks = getNextRestocks();
@@ -265,7 +264,7 @@ async function fetchAndRender() {
           </table>
         `;
       } else {
-        div.innerHTML = `
+div.innerHTML = `Add commentMore actions
           <div class="section-title"><span class="emoji">${section.emoji}</span>${section.label.replace(section.emoji, '')}</div>
           <span class="restock">${section.restock ? "⏳ Restock in: " + section.restock : ''}</span>
           <table>
@@ -275,7 +274,7 @@ async function fetchAndRender() {
             <tbody>
               ${section.rows.map(row => `
                 <tr>
-<td>${emojis[row.name] ? `<span class="emoji">${emojis[row.name]}</span>` : ''}${row.name}</td>Add commentMore actions
+                  <td>${emojis[row.name] ? `<span class="emoji">${emojis[row.name]}</span>` : ''}${row.name}</td>
                   <td>${formatValue(Number(row.quantity))}</td>
                   <td>${getItemPrice(row)}</td>
                 </tr>
@@ -326,7 +325,7 @@ async function checkApiStatus() {
   const onlineColor = getComputedStyle(document.documentElement).getPropertyValue('--online').trim() || '#4be87a';
   const offlineColor = getComputedStyle(document.documentElement).getPropertyValue('--offline').trim() || '#ff5252';
   try {
-    // Use GET to avoid HEAD being blocked
+// Use GET to avoid HEAD being blockedAdd commentMore actions
     const resp = await fetch("https://corsproxy.io/?https://gagstock.gleeze.com/grow-a-garden", { method: "GET", cache: "no-cache" });
     if (resp.ok) {
       apiStatusElem.textContent = "API: Online";
